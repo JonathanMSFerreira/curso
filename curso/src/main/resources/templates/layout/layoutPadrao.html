@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Curso de Spring</title>
+
+<link rel="stylesheet" th:href="@{/stylesheets/vendors.min.css}" />
+<link rel="stylesheet" th:href="@{/stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" th:href="@{stylesheets/application.css}" />
+
+
+</head>
+<body>
+
+	<div class="aw-layout-loading  js-loading-overlay">
+		<div class="aw-layout-loading__container">
+			<span class="aw-balls-spinner">Carregando...</span>
+		</div>
+	</div>
+
+	<div class="aw-layout-page">
+
+	<div th:replace="/layout/fragments/MenuPrincipal"></div>
+
+	<aside th:replace="/layout/fragments/MenuLateral"></aside>
+	
+	
+	<section layout:fragment="conteudo"></section>
+	
+	
+	<footer th:replace="/layout/fragments/MenuLateral"></footer>
+
+	</div>
+
+
+	<script th:src="@{/javascripts/vendors.min.js}"></script>
+	<script th:src="@{/javascripts/algaworks.min.js}"></script>
+	<script th:src="@{/vendors/maskmoney/jquery.maskMoney.min.js}"></script>
+	<script th:src="@{/javascripts/brewer.js}"></script>
+
+</body>
+</html>	
+
+
+		
+		
