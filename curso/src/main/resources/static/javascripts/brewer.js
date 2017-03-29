@@ -1,8 +1,10 @@
  $(function() {
-    $('.js-decimal').maskMoney();
+    var decimal = $('.js-decimal');
    
-    $('.js-natural').maskMoney({precision:0});
+    decimal.maskMoney({decimal:",",thousands:"."});
     
+    var natural = $('.js-natural');
     
+    natural.maskMoney({precision:0, thousands:"." }); 
     
   })
