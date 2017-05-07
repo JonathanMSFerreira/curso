@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
@@ -20,6 +21,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Cerveja implements Serializable {
@@ -44,16 +46,30 @@ public class Cerveja implements Serializable {
 	@NotBlank(message = "Insira uma descrição para esta cerveja")
 	private String descricao;
 
-	@NotNull(message = "Digite um preço para a cerveja")
-	@DecimalMin("0.01")
-	@Column(precision = 2, scale = 3)
+//	@NotNull(message = "Digite um preço para a cerveja")
+//	@DecimalMin("0.01")
+//	@Column(precision = 2, scale = 3)
+	@NumberFormat(pattern="###0,00")
 	private BigDecimal preco;
 
 	private BigDecimal teorAlcoolico;
 
 	private BigDecimal comissao;
 
+    @Lob
+	private byte[] imagem;
+	
+	
+	@NumberFormat(pattern="###0,00")
 	private Integer quantidadeEstoque;
+	
+	
+	private String descricaoImagem;
+	
+	
+	private String tipoImagem;
+	
+	
 
 	@Enumerated(EnumType.STRING)
 	private Sabor sabor;
@@ -81,8 +97,37 @@ public class Cerveja implements Serializable {
 		this.sku = sku;
 	}
 
+	
+	
+	
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
+
 	public String getNome() {
 		return nome;
+	}
+
+	
+	
+	public String getDescricaoImagem() {
+		return descricaoImagem;
+	}
+
+	public void setDescricaoImagem(String descricaoImagem) {
+		this.descricaoImagem = descricaoImagem;
+	}
+
+	public String getTipoImagem() {
+		return tipoImagem;
+	}
+
+	public void setTipoImagem(String tipoImagem) {
+		this.tipoImagem = tipoImagem;
 	}
 
 	public void setNome(String nome) {

@@ -23,6 +23,9 @@ public class CervejaController {
 
 	@Autowired
 	EstiloRepository estilos;
+	
+	@Autowired
+	CervejaRepository cervejas;
 
 	@Autowired
 	CervejaService cervejaService;
@@ -34,13 +37,15 @@ public class CervejaController {
 		mv.addObject("sabores", Sabor.values());
 		mv.addObject("origens", Origem.values());
 		mv.addObject("estilos", estilos.findAll());
-
+		mv.addObject("cervejas", cervejas.findAll());
+		
 		return mv;
 
 	}
 
 	@PostMapping("/novo")
 	public ModelAndView salvarCerveja(@Valid Cerveja cerveja, BindingResult result, RedirectAttributes attributes) {
+
 
 		
 		if (result.hasErrors()) {

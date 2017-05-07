@@ -15,29 +15,31 @@
 	<div class="container-fluid">
 
 
-		<form method="POST" th:object="${cerveja}" th:action="@{/cerveja/novo}" class="form-vertical  js-form-loading">
+		<form method="POST" th:object="${cerveja}"
+			th:action="@{/cerveja/novo}" class="form-vertical  js-form-loading">
 
 			<div th:include="/layout/fragments/MensagensErros"></div>
-	
-	
+
+
 			<div class="row">
 				<div class="col-sm-2 form-group">
 
-					<label for="sku">SKU</label> 
-					<input id="sku" type="text" class="form-control" th:field="*{sku}"/>
+					<label for="sku">SKU</label> <input id="sku" type="text"
+						class="form-control" th:field="*{sku}" />
 				</div>
 
 				<div class="col-sm-10 form-group">
 
-					<label for="nome">Nome</label> 
-					<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+					<label for="nome">Nome</label> <input id="nome" type="text"
+						class="form-control" th:field="*{nome}" />
 				</div>
 
 			</div>
 
 			<div class="form-group">
 				<label for="input-produto-descricao">Descrição</label>
-				<textarea id="input-produto-descricao" rows="3" class="form-control" th:field="*{descricao}">
+				<textarea id="input-produto-descricao" rows="3" class="form-control"
+					th:field="*{descricao}">
 				</textarea>
 			</div>
 
@@ -66,8 +68,8 @@
 
 
 				<div class="col-sm-3 form-group">
-					<label for="sabor">Sabor</label> 
-					   <select id="sabor" class="form-control" th:field="*{sabor}">
+					<label for="sabor">Sabor</label> <select id="sabor"
+						class="form-control" th:field="*{sabor}">
 
 						<option value="">Selecione um sabor</option>
 						<option th:each="sabor : ${sabores}" th:value="${sabor}"
@@ -81,7 +83,8 @@
 					<label for="teorAlcoolico">Teor Alcoólico</label>
 
 					<div class="input-group">
-						<input id="teorAlcoolico" type="text" class="form-control" th:field="*{teorAlcoolico}"/>
+						<input id="teorAlcoolico" type="text" class="form-control"
+							th:field="*{teorAlcoolico}" />
 						<div class="input-group-addon">%</div>
 					</div>
 
@@ -91,19 +94,20 @@
 				<div class="col-sm-3 form-group">
 
 					<label for="origem">Origem</label>
-					
-					
+
+
 					<div style="padding-top: 7px">
-					
-					<th:block  th:each="origem : ${origens}">
-					
-					<div class="radio radio-inline">
-							<input th:id="|id_${origem}|"  th:value="${origem}" th:text="${origem.descricao}" type="radio" th:field="*{origem}"/> 
-							<label th:for="|id_${origem}|"></label>
-						</div>
-					
-					</th:block>
-					
+
+						<th:block th:each="origem : ${origens}">
+
+							<div class="radio radio-inline">
+								<input th:id="|id_${origem}|" th:value="${origem}"
+									th:text="${origem.descricao}" type="radio" th:field="*{origem}" />
+								<label th:for="|id_${origem}|"></label>
+							</div>
+
+						</th:block>
+
 					</div>
 				</div>
 			</div>
@@ -117,7 +121,8 @@
 
 					<div class="input-group">
 						<div class="input-group-addon">R$</div>
-						<input id="preco" type="text" class="form-control js-decimal" th:field="*{preco}"/>
+						<input id="preco" type="text" class="form-control js-decimal"
+							th:field="*{preco}" />
 
 					</div>
 
@@ -129,7 +134,8 @@
 
 					<div class="input-group">
 
-						<input id="comissao" type="text" class="form-control" th:field="*{comissao}"/>
+						<input id="comissao" type="text" class="form-control"
+							th:field="*{comissao}" />
 						<div class="input-group-addon">%</div>
 					</div>
 				</div>
@@ -137,42 +143,68 @@
 				<div class="col-sm-3 form-group">
 
 					<label for="estoque">Estoque</label> <input id="estoque"
-						type="text" class="form-control js-natural" th:field="*{quantidadeEstoque}"/>
+						type="text" class="form-control js-natural"
+						th:field="*{quantidadeEstoque}" />
 				</div>
 
 
 
 			</div>
-			
-			
+
+
 			<div class="row">
 
 				<div class="col-sm-12 form-group">
 
-					<label class="control-label" for="foto">Foto</label>
+					<label class="control-label" for="foto">Foto</label> 
+					<input type="hidden" th:field="*{descricaoImagem}" /> 
+					<input type="hidden" th:field="*{tipoImagem}"/>
+					<input type="hidden" th:field="*{imagem}"/>
+						
 
 					<div id="upload-drop" class="bw-upload">
-					<i class="glyphicon glyphicon-cloud-upload"></i>
-					<span>Arraste a foto aqui ou</span>
-					<a class="bw-upload-from-file">selecione
-					
-					<input type="file" id="upload-select" accept=".jpg, .jpeg, .png"/>
-					
-					</a>
+						<i class="glyphicon glyphicon-cloud-upload"></i> <span>Arraste
+							a foto aqui ou</span> <a class="bw-upload-from-file">selecione <input
+							type="file" id="upload-select" accept=".jpg, .jpeg, .png" />
+
+						</a>
 
 					</div>
 
 				</div>
-			</div>	
-			
-			
-			
-				
+			</div>
+
 			<div class="form-group">
 				<button class="btn  btn-primary" type="submit">Salvar</button>
 			</div>
 		</form>
 	</div>
+
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Imagem</th>
+				<th>Descrição</th>
+				<th>Preço</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cerveja : ${cervejas}">
+				<td>
+				<img  class="info" th:src="${{cerveja.imagem}}"></img>
+				</td>
+				
+					
+				<td th:text="${cerveja.descricaoImagem}"></td>
+				<td th:text="${cerveja.preco}"></td>
+			</tr>
+
+		</tbody>
+	</table>
+
+
 
 
 	<div th:replace="/estilo/CadastroNovoEstilo"></div>
