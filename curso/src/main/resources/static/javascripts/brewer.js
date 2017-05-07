@@ -8,3 +8,21 @@
     natural.maskMoney({precision:0, thousands:"." }); 
     
   })
+  
+  
+  $(function(){
+	  
+	var settings = {
+		type: 'json',
+		filelimit: 1,
+//		allow: '*.(jpg,jpeg,png)',
+		action: '/foto/novo'
+	}  
+	  
+	UIkit.uploadSelect($('#upload-select'),settings);
+	UIkit.uploadDrop($('#upload-drop'),settings);
+	   
+  });
+ 
+ 
+ 
