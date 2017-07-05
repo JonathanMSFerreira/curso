@@ -1,5 +1,8 @@
 package com.curso.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +34,16 @@ public class CervejaController {
 	CervejaService cervejaService;
 	
 	@RequestMapping("/novo")
-	public ModelAndView novo(Cerveja cerveja) {
+	public ModelAndView novo(Cerveja cerveja){
 
 		ModelAndView mv = new ModelAndView("cerveja/CadastroCerveja");
 		mv.addObject("sabores", Sabor.values());
 		mv.addObject("origens", Origem.values());
 		mv.addObject("estilos", estilos.findAll());
 		mv.addObject("cervejas", cervejas.findAll());
+		
+		
+		
 		
 		return mv;
 

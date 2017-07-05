@@ -180,6 +180,7 @@
 		</form>
 	</div>
 
+<!--  <img  th:src="|data:image/jpeg;base64, ${imagemBite}|" />  -->
 
 
 	<table class="table">
@@ -193,7 +194,10 @@
 		<tbody>
 			<tr th:each="cerveja : ${cervejas}">
 				<td>
-				<img  class="info" th:src="${{cerveja.imagem}}"></img>
+<!-- 				<img  class="info" th:src="${{cerveja.imagem}}"></img> -->
+				<img id="profileImage" th:src="|data:image/jpg;base64, ${cerveja.imagem}|"/>
+				
+				
 				</td>
 				
 					
@@ -210,7 +214,12 @@
 	<div th:replace="/estilo/CadastroNovoEstilo"></div>
 </section>
 
+<th:block layout:fragment="extra-scripts">
+	
+	<script th:src="@{/javascripts/cadastro-rapido-estilo.js}"></script>
 
+
+</th:block>
 
 
 
